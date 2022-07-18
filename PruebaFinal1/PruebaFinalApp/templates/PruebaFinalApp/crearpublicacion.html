@@ -1,0 +1,23 @@
+{% extends "PruebaFinalApp/base.html" %}
+
+{%block title%}
+Prueba Final - Crear Publicacion
+{%endblock%}
+
+{%block contenido%}
+
+<form enctype="multipart/form-data" action="" method="POST">
+    {% csrf_token %}
+    
+        <table>
+    
+            {{publicacion.as_table}}
+    
+        </table>
+    
+        <input type="submit", value="Enviar">
+    
+    </form>
+
+
+{%endblock%}

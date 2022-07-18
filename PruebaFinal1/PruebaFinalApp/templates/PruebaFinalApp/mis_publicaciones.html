@@ -1,0 +1,22 @@
+{%extends "PruebaFinalApp/base.html"%}
+
+{%block contenido%}
+<div class="row gx-5">
+{%for publicacion in publicaciones%}
+    <div class="col-lg-4 mb-5">
+        <div class="card h-100 shadow border-0">
+            <img class="card-img-top" src="{{publicacion.imagen.url}}" alt="..." />
+            <div class="card-body p-4">
+                <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{publicacion.pais}}</div>
+                <p class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">{{publicacion.titulo}}</h5></p>
+                <p class="card-text mb-0">{{publicacion.descripcion|slice:120}}...</p>
+                <br>
+                <p class="card-text mb-0">Creado por: </p>
+                <p class="card-text mb-0">{{publicacion.fecha_viaje}}</p>
+            </div>                                
+        </div>
+    </div>
+{%endfor%}
+</div>
+
+{%endblock%}

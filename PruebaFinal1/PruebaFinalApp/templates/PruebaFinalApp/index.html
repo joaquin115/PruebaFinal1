@@ -1,0 +1,76 @@
+{%extends 'PruebaFinalApp/base.html'%}
+
+{%block title%}
+Prueba Final - Inicio
+{%endblock%}
+
+{%block contenido%}
+
+{%load static%}
+            <!-- Header-->
+            <header class="bg-dark py-5">
+                <div class="container px-5">
+                    <div class="row gx-5 align-items-center justify-content-center">
+                        <div class="col-lg-8 col-xl-7 col-xxl-6">
+                            <div class="my-5 text-center text-xl-start">
+                                <h1 class="display-5 fw-bolder text-white mb-2">Millas Viajeras</h1>
+                                <p class="lead fw-normal text-white-50 mb-4">Es un portal...</p>                                
+                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="" alt="" /></div>
+                    </div>
+                </div>
+            </header>     
+            <!-- Testimonial section-->
+            <div class="py-5 bg-light">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-10 col-xl-7">
+                            <div class="text-center">
+                                <div class="fs-4 mb-4 fst-italic">Usuarios Registrados: {{total_usuarios}}</div>
+                                <div class="fs-4 mb-4 fst-italic">Publicaciones Totales: {{total_publicaciones}}</div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Blog preview section-->
+            <section class="py-5">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-8 col-xl-6">
+                            <div class="text-center">
+                                <h2 class="fw-bolder">Ultimas Publicaciones</h2>
+                                <hr>
+                                <br>                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gx-5">
+                        {%if publicaciones|length == 0 %}
+                        <h1>No hay publicaciones aun...</h1>
+                        {%else%}
+                            {%for publicacion in publicaciones%}
+                            <div class="col-lg-4 mb-5">
+                                <div class="card h-100 shadow border-0">
+                                    <img class="card-img-top" src="{{publicacion.imagen.url}}" alt="..." />
+                                    <div class="card-body p-4">
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{publicacion.pais}}</div>
+                                        <a class="text-decoration-none link-dark stretched-link" href="{%url 'publicaciones' %}"><h5 class="card-title mb-3">{{publicacion.titulo}}</h5></a>
+                                        <p class="card-text mb-0">{{publicacion.descripcion|slice:120}}...</p>
+                                        <br>
+                                        <p class="card-text mb-0">Creado por: </p>
+                                        <p class="card-text mb-0">{{publicacion.fecha_viaje}}</p>                                       
+                                                                           
+                                    </div>                                
+                                </div>
+                            </div>
+                            {%endfor%}
+                        {%endif%}                            
+                    </div>              
+                </div>
+            </section>
+        </main>        
+{%endblock%}

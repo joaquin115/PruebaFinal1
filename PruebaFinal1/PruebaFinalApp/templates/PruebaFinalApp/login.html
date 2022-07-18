@@ -1,0 +1,20 @@
+{% extends 'PruebaFinalApp/base.html' %}
+{% load static %}
+
+{% block title %}
+Login - App Coder
+{% endblock %}
+
+{% block contenido %}
+
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <h1>Inicia Sesión</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

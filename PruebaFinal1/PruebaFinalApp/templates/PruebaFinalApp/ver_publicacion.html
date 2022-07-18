@@ -1,0 +1,19 @@
+{%extends "PruebaFinalApp/base.html" %}
+
+{%block contenido%}
+
+
+    <section class="py-5">
+        <div class="container px-5 my-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="{{publicaciones.imagen.url}}" alt="..." /></div>
+                <div class="col-lg-6">
+                    <h3 class="fw-bolder">{{ publicaciones.pais }}</h3>
+                    <h2 class="fw-bolder">{{ publicaciones.titulo }}</h2>
+                    <p class="lead fw-normal text-muted mb-0">{{ publicaciones.descripcion }}</p>
+                </div>
+            </div>
+        </div>
+    </section>  
+    
+{%endblock%}
