@@ -1,17 +1,21 @@
 from django.test import TestCase
 from .views import *
-from .models import Publicaciones
+from .models import *
 # Create your tests here.
 
 
 class PublicacionesTest(TestCase):
     def setUp(self):
-        Publicaciones.objects.create(titulo="Publicacion de viaje a Brasil", pais= 2,)
+        Publicaciones.objects.create(titulo="Viajando por Uruguay", pais= "Uruguay", descripcion="Montevideo", fecha_viaje="2022-07-18")
 
     def test_publicacion_nombre(self):
-        Publicacion = Publicacion.objects.get(pais = 2)
-        self.assertEqual(self.publicacion.nombre, "Publicacion de viaje a Brasil")
+        resultado = Publicaciones.objects.get(pais = "Uruguay")
+        self.assertEqual(resultado.titulo, "Viajando por Uruguay")   
 
     def test_publicacion_creada(self):
-        Publicacion = Publicacion.objects.get(pais = 2)
-        self.assertNotEquals(publicaciones, None)
+        resultado = Publicaciones.objects.get(pais = "Uruguay")
+        self.assertNotEquals(resultado, None)
+    
+    def test_publicacion_fecha(self):
+        resultado = Publicaciones.objects.get(pais = "Uruguay")
+        self.assertEqual(resultado.descripcion, "Montevideo")
