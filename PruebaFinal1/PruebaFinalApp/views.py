@@ -7,6 +7,7 @@ import datetime
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
+from psutil import users
 
 from .models import *
 from .forms import *
@@ -131,7 +132,7 @@ def crear_publicacion(request):
 
             informacion = publicacion.cleaned_data
 
-            publicacion_nueva = Publicaciones(imagen=informacion["imagen"],pais=informacion["pais"], titulo=informacion["titulo"], descripcion=informacion["descripcion"], fecha_viaje=informacion["fecha_viaje"])
+            publicacion_nueva = Publicaciones(imagen=informacion["imagen"],pais=informacion["pais"], titulo=informacion["titulo"], descripcion=informacion["descripcion"], fecha_viaje=informacion["fecha_viaje"], autor=request.user)
             publicacion_nueva.save()
 
             return redirect('inicio')
