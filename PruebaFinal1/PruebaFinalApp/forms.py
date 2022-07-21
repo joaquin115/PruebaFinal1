@@ -2,7 +2,7 @@ from xmlrpc.client import TRANSPORT_ERROR
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
+from ckeditor.fields  import RichTextField
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(label="Email", required=True)
@@ -35,6 +35,7 @@ class CrearPublicacion(forms.Form):
     imagen = forms.ImageField(allow_empty_file=True)
     pais = forms.CharField(max_length=50)
     titulo = forms.CharField(max_length=50)
-    descripcion = forms.CharField(widget=forms.Textarea())
+    descripcion = RichTextField(blank=True , null=True) 
+    #descripcion = forms.CharField(widget=forms.Textarea())
     fecha_viaje = forms.DateField()   
     

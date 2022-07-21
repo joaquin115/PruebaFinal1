@@ -1,7 +1,7 @@
 from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
-
+from ckeditor.fields import RichTextField
 # Create your models here.
 
 class Persona(models.Model):
@@ -14,7 +14,8 @@ class Publicaciones(models.Model):
     imagen = models.ImageField(null=True, blank=True)
     pais = models.CharField(max_length=50)
     titulo = models.CharField(max_length=50)
-    descripcion = models.TextField()
+    descripcion = RichTextField(blank=True , null=True)
+    #descripcion = models.TextField()
     fecha_viaje = models.DateField()
     autor = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL) 
 
